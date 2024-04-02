@@ -13,6 +13,8 @@ DotNet ORM (Object Relational Mapper): Entity Framework
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Tools
 Microsoft.EntityFrameworkCore.Design
+
+NewtonSoft.Json and Microsoft.AspNetCore.Mvc.NewtonsoftJson for including other Models
 Note: They are installed from NuGet Gallery. Open NuGet Gallery. Type in sqlserver and install entity framework
 
 // Migration
