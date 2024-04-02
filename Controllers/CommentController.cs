@@ -72,5 +72,11 @@ namespace api.Controllers
 
             return NoContent();
         }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Update([FromRoute] int id){
+
+        }
     }
 }

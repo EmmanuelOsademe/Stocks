@@ -46,5 +46,9 @@ namespace api.Repository
             _context.SaveChangesAsync();
             return commentModel;
         }
+
+        public async Task<Comment?> UpdateAsync(int id){
+            
+        }
     }
 }
