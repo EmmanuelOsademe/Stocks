@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using api.Interfaces;
 using api.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using api.Filters.ActionFilters.Stocks;
 
 
 namespace api.Controllers
@@ -35,11 +36,12 @@ namespace api.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [ValidateGetStockByIdFilter]
         public async Task<IActionResult> GetById([FromRoute] int id){
             var stock = await _stockRepo.GetByIdAsync(id);
-            if(stock == null){
-                return NotFound("Stock not found");
-            }
+            // if(stock == null){
+            //     return NotFound("Stock not found");
+            // }
 
             return Ok(stock.ToStockDto());
         }
