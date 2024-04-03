@@ -8,6 +8,7 @@ using api.Dtos.Stock;
 using Microsoft.EntityFrameworkCore;
 using api.Interfaces;
 using api.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace api.Controllers
@@ -24,14 +25,10 @@ namespace api.Controllers
         }
 
         [HttpGet]
-<<<<<<< HEAD
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] StockQuery query){
-            var stocks = await _stockRepo.GetAllAsync(query);
-=======
-        public async Task<IActionResult> GetAll(){
             if(!ModelState.IsValid) return BadRequest(ModelState);
-            var stocks = await _stockRepo.GetAllAsync();
->>>>>>> 9baac7698b0b5d369a45897dcb8ebbf5e2b0a8c6
+            var stocks = await _stockRepo.GetAllAsync(query);
             var stocksDto = stocks.Select(s => s.ToStockDto());
 
             return Ok(stocksDto);
