@@ -15,7 +15,7 @@ namespace api.Filters.ActionFilters.Stocks
         // {
         //     _stockRepo = stockRepo;
         // }
-        public override void OnActionExecuting(ActionExecutingContext context)
+        public async Task OnActionExecuting(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             base.OnActionExecuting(context);
 
@@ -27,12 +27,16 @@ namespace api.Filters.ActionFilters.Stocks
                     var problemDetails = new ValidationProblemDetails(context.ModelState){ Status = StatusCodes.Status400BadRequest};
                     context.Result = new BadRequestObjectResult(problemDetails);
                 }
-                // else if(!_stockRepo.StockExists(stockId.Value)){
+
+                // bool isExisitingStock = await _stockRepo.StockExists(stockId.Value);
+
+                // if(!isExisitingStock){
                 //     context.ModelState.AddModelError("Id", "Stock does not exist");
                 //     var problemDetails = new ValidationProblemDetails(context.ModelState) {Status = StatusCodes.Status404NotFound };
                 //     context.Result = new NotFoundObjectResult(problemDetails);
                 // }
             }
+            await next();
         }
     }
 }
