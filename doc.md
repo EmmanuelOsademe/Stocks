@@ -30,3 +30,10 @@ Note: They are installed from NuGet Gallery. Open NuGet Gallery. Type in sqlserv
 // Migration
 dotnet ef migrations add init
 dotnet ef database update
+
+// Visual Studio migration steps
+
+1. Go to Tools.
+2. Get the Nuget Console Manager
+3. Select the project
+4. type in: add migrations init
